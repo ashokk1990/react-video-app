@@ -4,30 +4,31 @@ import Api from '../api/youtube'
 import VideoDetail from './VideoDetail'
 import VideoList from './VideoList'
 
-class App extends React.PureComponent{
+class App extends React.PureComponent {
 
-    state={
-        videos :[],
-        selectedVideo:null
+    state = {
+        videos: [],
+        selectedVideo: null
     }
 
-    onSelectVideo=(video)=>{
-        this.setState({selectedVideo:video})
+    onSelectVideo = (video) => {
+        this.setState({selectedVideo: video})
     }
     handleSearch = async term => {
-        const response = await Api.get('/search',{
-            params:{
-                q:term
+        const response = await Api.get('/search', {
+            params: {
+                q: term
             }
         })
         this.setState({
-            videos:response.data.items,
-            selectedVideo:response.data.items[0]
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
         })
 
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div className="ui container">
                 <SearchBar handleSubmit={this.handleSearch}/>
                 <div className="ui grid">
@@ -44,4 +45,5 @@ class App extends React.PureComponent{
         );
     }
 }
+
 export default App;

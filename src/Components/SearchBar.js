@@ -1,18 +1,20 @@
 import React from 'react'
-class SearchBar extends React.PureComponent{
+
+class SearchBar extends React.PureComponent {
     state = {
-        term:''
+        term: ''
     };
 
-    handleSearchSubmit = (event)=>{
+    handleSearchSubmit = (event) => {
         event.preventDefault()
         this.props.handleSubmit(this.state.term)
     }
 
-    handleOnChange = (event)=>{
-        this.setState({term:event.target.value})
+    handleOnChange = (event) => {
+        this.setState({term: event.target.value})
     }
-    render(){
+
+    render() {
         return (
             <div className="search-bar ui segment">
                 <form className="ui form" onSubmit={this.handleSearchSubmit}>
@@ -25,4 +27,5 @@ class SearchBar extends React.PureComponent{
         )
     }
 }
+
 export default SearchBar;
